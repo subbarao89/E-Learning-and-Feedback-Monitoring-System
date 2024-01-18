@@ -1,0 +1,624 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.Cryptography.X509Certificates;
+using System.Text;
+using System.Threading.Tasks;
+using System.IO;
+using System.Collections;
+using static System.Net.Mime.MediaTypeNames;
+using System.Globalization;
+
+namespace e_lfmsconsole
+{
+    public class tlogin
+    {
+        public int c = 0, x=0;
+        public string s = string.Empty;
+        public int kl = 0;
+        public void login(string username, string password, ArrayList nstuser, ArrayList nstpass, ArrayList s1,ArrayList s2, ArrayList s3, ArrayList s4, ArrayList f1, ArrayList f2, ArrayList f3, ArrayList f4, List<string> nuser,List<string> npass)
+        {
+            
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("Login successful");
+            Console.WriteLine("\n");
+            while (true)
+            {
+                Console.ForegroundColor = ConsoleColor.DarkCyan;
+                if (x==1)
+                        break;
+                    Console.WriteLine("1.Subject document\n2.Assignment\n3.Course feedback\n4.Delete student\n5.logout");
+                Console.Write("Enter your option:");
+                    int a=Convert.ToInt32(Console.ReadLine());
+                    if(a==1)
+                    {
+                        Console.Write("Enter data: ");
+                        string u1 = @"C:\Users\Dell-E7440\Desktop\C#\file\sem1\u2.txt";
+                        if(File.Exists(u1))
+                        {
+                            s=Console.ReadLine();
+                            File.WriteAllText(u1, s);
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.Write("file uploaded ");
+                        Console.Write("\n");
+                    }
+                    }
+                    else if (a == 2)
+                    {
+                    Console.Write("\n");
+                    Console.ForegroundColor = ConsoleColor.DarkCyan;
+                    Console.WriteLine("Subjects list");
+
+                   Console.WriteLine("1.JAVA\n2.C#\n3.Cpp\n4.Maths");
+                    int k=Convert.ToInt32(Console.ReadLine());
+                    if (k == 1)
+                    {
+                        Console.WriteLine("Submitted list");
+                        if (s1.Count <= 0)
+                        {
+                            c = 1;
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine("No one submitted");
+                            Console.WriteLine("\n");
+                        }
+                        else
+                        {
+                            for (int i = 0; i < s1.Count; i++)
+                            {
+                                Console.ForegroundColor = ConsoleColor.Green;
+                                Console.WriteLine(s1[i] + "submited by student:" + nstuser[i]);
+                                Console.WriteLine("\n");
+                            }
+                        }
+                    }
+                    else if(k==2)
+                    {
+                        Console.WriteLine("Submitted list");
+                        if (s2.Count <= 0)
+                        {
+                            c = 1;
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine("No one submitted");
+                            Console.WriteLine("\n");
+                        }
+                        else
+                        {
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            for (int i = 0; i < s2.Count; i++)
+
+                                Console.WriteLine(s2[i] + "submited by student:" + nstuser[i]);
+                        }
+                    }
+                    else if(k==3)
+                    {
+                        Console.WriteLine("Submitted list");
+                        if (s3.Count <= 0)
+                        {
+                            c = 1;
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine("No one submitted");
+                            Console.WriteLine("\n");
+                        }
+                        else
+                        {
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            for (int i = 0; i < s3.Count; i++)
+                            {
+
+                                Console.WriteLine(s3[i] + "submited by student:" + nstuser[i]);
+                                Console.WriteLine("\n");
+                            }
+                        }
+                    }
+                    else if(k==4)
+                    {
+                        Console.WriteLine("Submitted list");
+                        if (s4.Count <= 0)
+                        {
+                            c = 1;
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine("No one submitted");
+                            Console.WriteLine("\n");
+                        }
+                        else
+                        {
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            for (int i = 0; i < s4.Count; i++)
+                            {
+
+                                Console.WriteLine(s4[i] + "submited by student:" + nstuser[i]);
+                                Console.WriteLine("\n");
+                            }
+                        }
+                    }
+                    Console.WriteLine("\n");
+                }
+                   else if(a==3)
+                {
+                    Console.ForegroundColor = ConsoleColor.DarkCyan;
+                    Console.WriteLine("Subjects list");
+
+                    Console.WriteLine("1.JAVA\n2.C#\n3.Cpp\n4.Maths");
+                    Console.Write("Enter your option: ");
+                    int y = Convert.ToInt32(Console.ReadLine());
+                    if (y == 1)
+                    {
+                        Console.WriteLine("List of feedback submission");
+                        if (f1.Count <= 0)
+                        {
+                            Console.WriteLine("No one submitted");
+                            Console.Write("Give feedback: ");
+                            c = 2;
+                            Console.WriteLine("\n");
+                        }
+                        else
+                        {
+                            for (int i = 0; i < f1.Count; i++)
+                            {
+                                Console.ForegroundColor = ConsoleColor.Green;
+                                Console.WriteLine(i + 1 + "." + f1[i] + "---submited by student:" + nstuser[i]);
+                                Console.WriteLine("\n");
+                            }
+                        }
+                    }
+                    else if(y==2)
+                    {
+                        Console.WriteLine("List of feedback submission");
+                        if (f2.Count <= 0)
+                        {
+                            Console.WriteLine("No one submitted");
+                            Console.Write("Give feedback: ");
+                            c = 2;
+                            Console.WriteLine("\n");
+                        }
+                        else
+                        {
+                            for (int i = 0; i < f2.Count; i++)
+                            {
+                                Console.ForegroundColor = ConsoleColor.Green;
+                                Console.WriteLine(i + 1 + "." + f2[i] + "---submited by student:" + nstuser[i]);
+                                Console.WriteLine("\n");
+                            }
+                        }
+
+                    }
+                    else if(y==3)
+                    {
+                        Console.WriteLine("List of feedback submission");
+                        if (f3.Count <= 0)
+                        {
+
+                            Console.WriteLine("No one submitted");
+                            Console.Write("Give feedback: ");
+                            c = 2;
+                            Console.WriteLine("\n");
+                        }
+                        else
+                        {
+                            for (int i = 0; i < f3.Count; i++)
+                            {
+                                Console.ForegroundColor = ConsoleColor.Green;
+                                Console.WriteLine(i + 1 + "." + f3[i] + "---submited by student:" + nstuser[i]);
+                                Console.WriteLine("\n");
+                            }
+                        }
+
+                    }
+                    else if(y==4)
+                    {
+                        Console.WriteLine("List of feedback submission");
+                        if (f4.Count <= 0)
+                        {
+                            Console.WriteLine("No one submitted");
+                            Console.Write("Give feedback: ");
+                            c = 2;
+                            Console.WriteLine("\n");
+                        }
+                        else
+                        {
+                            for (int i = 0; i < nstuser.Count; i++)
+                            {
+                                Console.ForegroundColor = ConsoleColor.Green;
+                               
+                                Console.WriteLine(i + 1 + "." + f4[i]+"---submited by student:" + nstuser[i]);
+                                Console.WriteLine("\n");
+                            }
+                        }
+
+                    }
+                }
+                    else if(a==4)
+                {
+                    for(int i=0;i<nstuser.Count;i++)
+                    {
+                        Console.ForegroundColor = ConsoleColor.DarkCyan;
+                        Console.WriteLine(i + 1 + "." + nstuser[i]);
+                        
+                        
+                    }
+                    Console.WriteLine("\n");
+                    Console.WriteLine("Enter option to delete: ");
+                    int km = Convert.ToInt32(Console.ReadLine());
+                    string sse = (string)nstuser[km - 1];
+                    nstuser.RemoveAt(km - 1);
+                    nstpass.RemoveAt(km - 1);
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("student with name :"+sse+" delete successfully");
+                    Console.WriteLine("\n");
+                    Console.ForegroundColor = ConsoleColor.DarkCyan;
+                    Console.WriteLine("Updated list: ");
+                    for (int i = 0; i < nstuser.Count; i++)
+                    {
+                        Console.ForegroundColor = ConsoleColor.DarkCyan;
+                        Console.WriteLine(i + 1 + "." + nstuser[i]);
+
+
+                    }
+                    Console.WriteLine("\n");
+
+                }
+                    else if(a== 5)
+                    {
+                        x = 1;
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("Logout successful");
+                    break;
+                    }
+                    else
+                    { Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("Enter valid option");
+                    Console.ForegroundColor = ConsoleColor.DarkCyan;
+                    Console.WriteLine("\n");
+                }
+
+                
+            }
+        
+
+
+        }
+    }
+    public class slogin:tlogin
+    {
+        public int mm = 0;
+        public slogin(ArrayList s1, ArrayList s2,ArrayList s3,ArrayList s4,ArrayList f1,ArrayList f2,ArrayList f3,ArrayList f4,ArrayList nstuser,ArrayList nstpass)
+        {
+            Console.Write("Enter username: ");
+            string user = Console.ReadLine();
+            Console.Write("Enter password: ");
+            string pass = Console.ReadLine();
+            for (int i = 0; i < nstuser.Count; i++)
+            {
+                
+
+                if (user.Equals( nstuser[i]) && pass.Equals(nstpass[i]))
+                {
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("Login successful");
+                    Console.ForegroundColor = ConsoleColor.DarkCyan;
+                    Console.WriteLine("\n");
+                    while (true)
+                    {
+                       
+                        if (x == 1)
+                            break;
+                        Console.ForegroundColor = ConsoleColor.DarkCyan;
+                        Console.WriteLine("1.Subject document\n2.Assignment\n3.Course feedback\n4.logout");
+                        Console.Write("Enter your option: ");
+                        int a = Convert.ToInt32(Console.ReadLine());
+                        if (a == 1)
+                        {
+                            string s = @"C:\Users\Dell-E7440\Desktop\C#\file\sem1\u2.txt";
+                            if (File.Exists(s))
+                            {
+                                string k = File.ReadAllText(s);
+                                Console.WriteLine(k);
+                                Console.ForegroundColor = ConsoleColor.Green;
+                                Console.WriteLine("thank you");
+                            }
+                            Console.WriteLine("\n");
+                        }
+                        else if (a == 2)
+                        {
+                            Console.ForegroundColor = ConsoleColor.DarkCyan;
+                            Console.WriteLine("Subjects list");
+
+                            Console.WriteLine("1.JAVA\n2.C#\n3.Cpp\n4.Maths");
+                            Console.Write("Enter your option: ");
+                            int z = Convert.ToInt32(Console.ReadLine());
+                            if (z == 1)
+                            {
+                                Console.WriteLine("Enter assingment: ");
+                                s1.Add(Console.ReadLine());
+                                Console.ForegroundColor = ConsoleColor.Green;
+                                Console.WriteLine("submitted ");
+                                Console.WriteLine("\n");
+                            }
+                            else if (z == 2)
+                            {
+                                Console.ForegroundColor = ConsoleColor.DarkCyan;
+                                Console.WriteLine("Enter assingment: ");
+                                s2.Add(Console.ReadLine());
+                                Console.ForegroundColor = ConsoleColor.Green;
+                                Console.WriteLine("submitted ");
+                                Console.WriteLine("\n");
+                            }
+                            else if (z == 3)
+                            {
+                                Console.ForegroundColor = ConsoleColor.DarkCyan;
+                                Console.WriteLine("Enter assingment: ");
+                                s3.Add(Console.ReadLine());
+                                Console.ForegroundColor = ConsoleColor.Green;
+                                Console.WriteLine("submitted ");
+                                Console.WriteLine("\n");
+                            }
+                            else if (z == 4)
+                            {
+                                Console.ForegroundColor = ConsoleColor.DarkCyan;
+                                Console.WriteLine("Enter assingment: ");
+                                s4.Add(Console.ReadLine());
+                                Console.ForegroundColor = ConsoleColor.Green;
+                                Console.WriteLine("submitted ");
+                                Console.WriteLine("\n");
+                            }
+
+                        }
+                        else if (a == 3)
+                        {
+                            Console.ForegroundColor = ConsoleColor.DarkCyan;
+                            Console.WriteLine("Subjects list");
+
+                            Console.WriteLine("1.JAVA\n2.C#\n3.Cpp\n4.Maths");
+                            Console.Write("Enter your option: ");
+                            int m = Convert.ToInt32(Console.ReadLine());
+                            if (m == 1)
+                            {
+                                Console.ForegroundColor = ConsoleColor.DarkCyan;
+                                Console.WriteLine("Enter Feedback: ");
+                                f1.Add(Console.ReadLine());
+                                Console.ForegroundColor = ConsoleColor.Green;
+                                Console.WriteLine("submitted ");
+                                Console.WriteLine("\n");
+                            }
+                            else if (m == 2)
+                            {
+                                Console.ForegroundColor = ConsoleColor.DarkCyan;
+                                Console.WriteLine("Enter Feedback: ");
+                                f2.Add(Console.ReadLine());
+                                Console.ForegroundColor = ConsoleColor.Green;
+                                Console.WriteLine("submitted ");
+                                Console.WriteLine("\n");
+                            }
+                            else if (m == 3)
+                            {
+                                Console.ForegroundColor = ConsoleColor.DarkCyan;
+                                Console.WriteLine("Enter Feedback: ");
+                                f3.Add(Console.ReadLine());
+                                Console.ForegroundColor = ConsoleColor.Green;
+                                Console.WriteLine("submitted ");
+                                Console.WriteLine("\n");
+                            }
+                            else if (m == 4)
+                            {
+                                Console.ForegroundColor = ConsoleColor.DarkCyan;
+                                Console.WriteLine("Enter Feedback: ");
+                                f4.Add(Console.ReadLine());
+                                Console.ForegroundColor = ConsoleColor.Green;
+                                Console.WriteLine("submitted ");
+                                Console.WriteLine("\n");
+                            }
+
+                        }
+                        else
+                        {
+                            x = 1;mm = 1;
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            Console.WriteLine("Logout successful");
+                            break;
+                        }
+                    }
+                }
+               
+            }
+            if (mm == 0)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("invalid credentials");
+                Console.WriteLine("\n");
+            }
+        }
+    }
+   
+    internal class Program
+    {
+        
+
+        static void Main(string[] args)
+        {
+             ArrayList s1 = new ArrayList();
+            ArrayList s2 = new ArrayList();
+            ArrayList s3= new ArrayList();
+            ArrayList s4 = new ArrayList();
+            ArrayList f1= new ArrayList();
+            ArrayList f2 = new ArrayList();
+            ArrayList f3 = new ArrayList();
+            ArrayList f4 = new ArrayList();
+
+            List<string> nuser= new List<string>();
+            List<string> npass = new List<string>();
+            ArrayList nstuser = new ArrayList();
+            ArrayList nstpass = new ArrayList();
+            s1.Add("java-->"); s2.Add("cpp ass submitted"); s3.Add("c# ass submitted"); s4.Add("maths ass submitted");
+            f1.Add("good"); f2.Add("good"); f3.Add("good"); f4.Add("good");
+            nuser.Add("user");nstuser.Add("student");
+            npass.Add("user");nstpass.Add("student");
+
+        int a = 0;int kl = 0;
+            int b = 0;
+            int c = 0;
+            string username;
+            string password;
+            int winWidth = (Console.WindowWidth / 2);
+            tlogin t = new tlogin();
+            while (true)
+            {
+                Console.ForegroundColor = ConsoleColor.DarkCyan;
+                Console.WriteLine("\n");
+                Console.WriteLine("****************");
+                Console.WriteLine("E-learning & feedback monitoring system ");
+                Console.WriteLine("Register/Log-in 1.yes 2.no ");
+                Console.Write("Enter your option: ");
+                b = int.Parse(Console.ReadLine());
+                if (b == 1)
+                {
+                    Console.WriteLine("1.Admin\n2.User");
+                    Console.Write("Enter your option: ");
+                    c = int.Parse(Console.ReadLine());
+                    //admin register
+                    if (c == 1)
+                    {
+                        Console.Write("Enter Username: ");
+                        string nu = Console.ReadLine().ToLower();
+                       
+                       Console.Write("Enter password: ");
+                        string np = Console.ReadLine().ToLower();
+                        int i = 0;
+                        for(i=0;i<nuser.Count;i++)
+                        {
+                            if (nu.Equals(nuser[i]) && np.Equals(npass[i]))
+                            {
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.WriteLine("Admin already registerd");
+                                Console.WriteLine("\n");
+                                break;
+                            }
+                            Console.ForegroundColor = ConsoleColor.DarkCyan;
+
+                        }
+                        if (i == nuser.Count)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            Console.WriteLine("Register success Thank you");
+                            Console.WriteLine("\n");
+                        }
+                        nuser.Add(nu);
+                        npass.Add(np);
+                        
+                    }
+                    //user register
+                   
+                    else if(c==2)
+                    {
+                        Console.ForegroundColor = ConsoleColor.DarkCyan;
+                        Console.Write("Enter Username: ");
+                        string nsu = Console.ReadLine().ToLower();
+                        
+                        Console.Write("Enter password: ");
+                        string nsp = Console.ReadLine().ToLower();
+                        int i = 0;
+                        for ( i = 0; i < nstuser.Count; i++)
+                        {
+                            if (nsu.Equals(nstuser[i]) && nsp.Equals(nstpass[i]))
+                            {
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.WriteLine("User already registerd");
+                                Console.WriteLine("\n");
+                                break;
+                            }
+                            Console.ForegroundColor = ConsoleColor.DarkCyan;
+
+                        }
+                        if (i == nuser.Count)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            Console.WriteLine("Register success Thank you");
+                            Console.WriteLine("\n");
+                        }
+                        nstuser.Add(nsu);
+                        nstpass.Add(nsp);
+
+
+                    }
+
+
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("invalid option");
+                        Console.WriteLine("\n");
+                    }
+                }
+                
+                
+                else if(b==2)
+                {
+                    Console.ForegroundColor = ConsoleColor.DarkCyan;
+                    Console.WriteLine("E-learning & feedback monitoring system ");
+                    Console.WriteLine("1.Admin\n2.User\n3.Exit");
+                    Console.Write("Enter your option: ");
+                    a = Convert.ToInt32(Console.ReadLine());
+                    if (a == 1)
+                    {
+                        Console.Write("Enter username: ");
+                        username = Console.ReadLine();
+                        Console.Write("Enter password: ");
+                        password = Console.ReadLine();
+                        //admin login checkup
+                        int i = 0,kk = 0;
+
+                        for ( i = 0; i < nuser.Count; i++)
+                        {
+                           
+                            if (username .Equals(nuser[i]) && password .Equals( npass[i]))
+                            {
+                                kk = 1;
+                                tlogin t1 = new tlogin();
+                                t1.login(username, password,nstuser,nstpass, s1,s2,s3,s4, f1,f2,f3,f4,nuser,npass);
+
+                            }
+                            
+                        }
+                        if(kk==0)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine("Invalid credentials");
+                            Console.WriteLine("\n");
+                        }
+
+                        if (i == nuser.Count&& t.kl==1)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine("please register");
+                            Console.WriteLine("\n");
+                        }
+                    }
+                    //user log in
+                    
+                        else if (a == 2)
+                    {
+                      
+                        slogin s = new slogin(s1,s2,s3,s4, f1,f2,f3,f4,nstuser,nstpass);
+                    }
+                    else if (a == 3)
+                    {
+                        Environment.Exit(0);
+                    }
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("Enter valid option");
+                        Console.WriteLine("\n");
+                    }
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("invalid option");
+                    Console.WriteLine("\n");
+
+                }
+            }
+
+        }
+    }
+}
